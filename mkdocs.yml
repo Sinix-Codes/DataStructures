@@ -1,2 +1,39 @@
 site_name: DataStructure
 
+theme:
+  name: material
+     
+  palette:
+    scheme: slate
+    primary: teal
+    accent: light blue
+
+  icon:
+    logo: material/network
+    favicon: material/datastructure
+
+  features:
+    - content.tabs.link
+    - navigation.tabs
+    - toc.integrate
+
+nav:
+  - Home:
+    - Data Structures: index.md
+    - Data-Type: Data-type/Data-type.md
+    - Algorithms: Algorithm/algorithms.md
+    - Dynamic-Memory-Allocation: Dynamic_Memory_Allocation/Dynamic_Memory_Allocation.md
+    - Searching: Searching/Searching.md
+    - Sorting: Sorting/Sorting.md
+    - Hashing: Hashing/Hashing.md
+    - Linked-List: Linked_List/Linked_List.md
+  - Programs:
+    - Home: programs/index.md
+  
+    
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kunal-khairnar-05
+      name: Kunal Khairnar
