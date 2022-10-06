@@ -20,11 +20,10 @@ theme:
 nav:
   - Home:
     - Data Structures: index.md
-    - Data-Type: Data-type/Data-type.md
-    - Algorithms: Algorithm/algorithms.md
+    - Data-Type: Data-Type/Data-type.md
     - Dynamic-Memory-Allocation: Dynamic_Memory_Allocation/Dynamic_Memory_Allocation.md
-    - Searching: Searching/Searching.md
-    - Sorting: Sorting/Sorting.md
+    - Searching: Searching/searching.md
+    - Sorting: Sorting/sorting.md
     - Hashing: Hashing/Hashing.md
     - Linked-List: Linked_List/Linked_List.md
   - Programs:
