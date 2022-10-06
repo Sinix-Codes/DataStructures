@@ -1,4 +1,4 @@
-# Searching in One dimention array
+# Searching in One dimention array :eyes:
 
 This algorithm is used to search an element in a one dimention array.
 
@@ -81,6 +81,6 @@ Enter the number to be searched: 5
 The number is found at position 5
 ```
 
-## Time Complexity
+## Time Complexity :watch:
 
 The time complexity of this algorithm is O(n).
