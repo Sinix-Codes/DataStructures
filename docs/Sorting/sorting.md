@@ -6,8 +6,6 @@ Bubble sort is a simple sorting algorithm. This sorting algorithm is comparison-
 
 ### *Pseudocode* :page_facing_up:
 
-```
-
 ```c
 
 procedure bubbleSort( A : list of sortable items )
