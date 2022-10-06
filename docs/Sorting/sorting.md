@@ -340,3 +340,183 @@ end procedure
         print(arr[i], end=" ")
 
     ```
+
+---
+
+## **Radix sort** :abacus:
+
+Radix sort is a non-comparative integer sorting algorithm that sorts data with integer keys by grouping keys by the individual digits which share the same significant position and value. A positional notation is required, but because integers can represent strings of characters (e.g., names or dates) and specially formatted floating point numbers, radix sort is not limited to integers.
+
+### *Pseudocode* :page_facing_up:
+
+```c
+
+procedure radixsort( list )
+   bucket = new array of buckets
+   for i = 0 to length(list) - 1
+      insert list[i] into bucket[0]
+   end for
+   for i = 0 to 9
+      sort bucket[i] using any sorting algorithm
+      (recursive radix sort can be used here)
+   end for
+   concatenate the buckets
+end procedure
+
+```
+
+=== "C"
+    ```c
+    #include<stdio.h>
+
+    int Getmax(int arr[],int size){
+        int max=arr[0];
+        for (int i = 1; i < size; i++)
+        {
+            if (arr[i]>max)
+            {
+                max=arr[i];
+            }
+            
+        }
+        return max;
+    }
+
+    void CountingSort(int arr[],int size,int div){
+        int output[size];
+        int count[10]={0};
+
+        for (int i = 0; i < size; i++)
+        {
+            count[(arr[i]/div)%10]++;
+        }
+        for (int i = 1; i < 10; i++)
+        {
+            count[i]+=count[i-1];
+        }
+        for (int i = size-1; i >= 0; i--)
+        {
+            output[count[(arr[i]/div)%10 ]-1]=arr[i];
+            count[(arr[i]/div)%10]--;
+        }
+        for (int i = 0; i < size; i++)
+        {
+            arr[i]=output[i];
+        }
+        
+    }
+
+    void radixSort(int arr[],int size){
+        int m = Getmax(arr,size);
+
+        for (int div= 1; m/div >0; div*=10)
+        {
+            CountingSort(arr,size,div);
+        }
+        
+    }
+
+    int main(){
+    int size;
+    printf("Enter size of array: )";
+    scanf("%d",&size);
+
+    int arr[size];
+    printf("Enter %d integers in any order : ",size);
+
+    for(int i=0;i<size;i++){
+        scanf("%d",&arr[i]);
+    }
+
+    for(int i=0;i<size;i++){
+        printf("%d ",arr[i]);
+    }
+
+        printf("\n");
+        radixSort(arr,size);
+
+    for(int i=0;i<size;i++){
+        printf("%d",arr[i]);
+    }
+        return 0;
+    }
+    ```
+
+=== "C++"
+    ```c++
+    #include<iostream>
+    using namespace std;
+
+    int Getmax(int arr[],int size){
+        int max=arr[0];
+        for (int i = 1; i < size; i++)
+        {
+            if (arr[i]>max)
+            {
+                max=arr[i];
+            }
+            
+        }
+        return max;
+    }
+
+    void CountingSort(int arr[],int size,int div){
+        int output[size];
+        int count[10]={0};
+
+        for (int i = 0; i < size; i++)
+        {
+            count[(arr[i]/div)%10]++;
+        }
+        for (int i = 1; i < 10; i++)
+        {
+            count[i]+=count[i-1];
+        }
+        for (int i = size-1; i >= 0; i--)
+        {
+            output[count[(arr[i]/div)%10 ]-1]=arr[i];
+            count[(arr[i]/div)%10]--;
+        }
+        for (int i = 0; i < size; i++)
+        {
+            arr[i]=output[i];
+        }
+        
+    }
+
+    void radixSort(int arr[],int size){
+        int m = Getmax(arr,size);
+
+        for (int div= 1; m/div >0; div*=10)
+        {
+            CountingSort(arr,size,div);
+        }
+        
+    }
+
+    int main(){
+    int size;
+    cout<<"Enter size of array: ";
+    cin>>size;
+
+    int arr[size];
+    cout<<"Enter "<<size<<" integers in any order : "<<endl;
+
+    for(int i=0;i<size;i++){
+        cin >> arr[i];
+    }
+
+    for(int i=0;i<size;i++){
+        cout<<arr[i]<<" ";
+    }
+
+        cout<<endl;
+        radixSort(arr,size);
+
+    for(int i=0;i<size;i++){
+        cout<<arr[i]<<" ";
+    }
+        return 0;
+    }
+
+    ```
