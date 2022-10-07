@@ -847,3 +847,180 @@ Merge sort is a divide and conquer algorithm. It divides the input array into tw
     ### **Applications :computer: **
 
     - Merge Sort is useful for sorting linked lists in O(nLogn) time. In the case of linked lists, the case is different mainly due to the difference in memory allocation of arrays and linked lists. Unlike arrays, linked lists don’t have contiguous memory locations. Due to this difference, in arrays, we can do random access as elements are contiguous in memory. Let us say we have an integer (4-byte) array A and let the address of A[0] be x then to access A[i], we can directly access the memory at (x + i*4). Unlike arrays, we can not do random access in linked lists. Quick Sort requires a lot of this kind of access. In linked list to access i’th index, we have to travel each and every node from the head to i’th node as we don’t have a continuous block of memory. Therefore, the overhead increases for quicksort. Merge sort accesses data sequentially and the need of random access is low.
+---
+
+### **Cocktail Sort 🍷 **
+
+Cocktail Sort is a variation of Bubble sort. The Bubble sort algorithm always traverses elements from left and moves the largest element to its correct position in first iteration and second largest in second iteration and so on. Cocktail Sort traverses through a given array in both directions alternatively.
+
+### **Algorithm :computer: **
+- Initially, we start the loop from left side and move the largest element to the end of the array.
+- Then, we start the loop from right side and move the smallest element to the beginning of the array.
+- This process goes on until the array is sorted.
+
+### **Implementation :computer: **
+
+=== "C"
+    ```c
+    #include<stdio.h>
+
+    void cocktailSort(int arr[],int n){
+        int swapped=1;
+        int start=0;
+        int end=n-1;
+
+        while (swapped)
+        {
+            swapped=0;
+
+            for (int i = start; i < end; i++)
+            {
+                if (arr[i]>arr[i+1])
+                {
+                    int temp=arr[i];
+                    arr[i]=arr[i+1];
+                    arr[i+1]=temp;
+                    swapped=1;
+                }
+            }
+
+            if (!swapped)
+            {
+                break;
+            }
+            swapped=0;
+            end--;
+
+            for (int i = end-1; i >= start; i--)
+            {
+                if (arr[i]>arr[i+1])
+                {
+                    int temp=arr[i];
+                    arr[i]=arr[i+1];
+                    arr[i+1]=temp;
+                    swapped=1;
+                }
+            }
+            start++;
+        }
+    }
+
+    void printArray(int arr[],int n){
+        for (int i = 0; i < n; i++)
+        {
+            printf("%d ",arr[i]);
+        }
+        printf("\n");
+    }
+
+    int main(){
+        int arr[]={5,1,4,2,8,0,2};
+        int n=sizeof(arr)/sizeof(arr[0]);
+
+        printf("Given array is \n");
+        printArray(arr,n);
+
+        cocktailSort(arr,n);
+
+        printf("\nSorted array is \n");
+        printArray(arr,n);
+        return 0;
+    }
+
+    ```
+
+=== "C++"
+    ```cpp
+        #include<bits/stdc++.h>
+        using namespace std;
+
+        // Sorts array a[0..n-1] using Cocktail sort
+        void CocktailSort(int a[], int n)
+        {
+        bool swapped = true;
+        int start = 0;
+        int end = n - 1;
+
+        while (swapped) {
+        // reset the swapped flag on entering
+        // the loop, because it might be true from
+        // a previous iteration.
+        swapped = false;
+
+        // loop from left to right same as
+        // the bubble sort
+        for (int i = start; i < end; ++i) {
+        if (a[i] > a[i + 1]) {
+            swap(a[i], a[i + 1]);
+            swapped = true;
+        }
+        }
+
+        // if nothing moved, then array is sorted.
+        if (!swapped)
+        break;
+
+        // otherwise, reset the swapped flag so that it
+        // can be used in the next stage
+        swapped = false;
+
+        // move the end point back by one, because
+        // item at the end is in its rightful spot
+        --end;
+
+        // from right to left, doing the
+        // same comparison as in the previous stage
+        for (int i = end - 1; i >= start; --i) {
+        if (a[i] > a[i + 1]) {
+            swap(a[i], a[i + 1]);
+            swapped = true;
+        }
+        }
+
+        // increase the starting point, because
+        // the last stage would have moved the next
+        // smallest number to its rightful spot.
+        ++start;
+        }
+        }
+
+        /* Prints the array */
+        void printArray(int a[], int n)
+        {
+        for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+        printf("\n");
+        }
+
+        // Driver code
+        int main()
+        {
+        int arr[] = { 5, 1, 4, 2, 8, 0, 2 };
+        int n = sizeof(arr) / sizeof(arr[0]);
+        CocktailSort(arr, n);
+        printf("Sorted array :\n");
+        printArray(arr, n);
+        return 0;
+        }
+    ```
+output
+
+```
+    Given array is
+    5 1 4 2 8 0 2
+
+    Sorted array is
+    0 1 2 2 4 5 8
+```
+### **Time Complexity :watch: **
+The time complexity of Cocktail Sort is O(n2) in worst case and O(n) in best case.
+
+### **Space Complexity :watch: **
+
+The space complexity of Cocktail Sort is O(1) as it is an in-place sorting algorithm.
+
+### **Applications :computer: **
+
+- Cocktail Sort is useful when the array is reverse sorted.
+- Cocktail Sort is also useful when the array is sorted in ascending order and few elements are misplaced in the array.
+---
