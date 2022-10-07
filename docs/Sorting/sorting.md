@@ -520,3 +520,318 @@ end procedure
     }
 
     ```
+
+=== "Python"
+    ```python
+    def Getmax(arr,size):
+        max=arr[0]
+        for i in range(1,size):
+            if arr[i]>max:
+                max=arr[i]
+        return max
+
+    def CountingSort(arr,size,div):
+
+        output=[0]*size
+        count=[0]*10
+
+        for i in range(0,size):
+            count[(arr[i]/div)%10]+=1
+        for i in range(1,10):
+            count[i]+=count[i-1]
+        for i in range(size-1,-1,-1):
+            output[count[(arr[i]/div)%10]-1]=arr[i]
+            count[(arr[i]/div)%10]-=1
+        for i in range(0,size):
+            arr[i]=output[i]
+
+    def radixSort(arr,size):
+        m = Getmax(arr,size)
+
+        div=1
+        while m/div >0:
+            CountingSort(arr,size,div)
+            div*=10
+
+    size=int(input("Enter size of array: "))
+    arr=[]
+
+    print("Enter",size,"integers in any order : ")
+    for i in range(0,size):
+        arr.append(int(input()))
+
+    print("Array before sorting: ")
+    for i in range(0,size):
+        print(arr[i],end=" ")
+
+    radixSort(arr,size)
+
+    print("\nArray after sorting: ")
+    for i in range(0,size):
+        print(arr[i],end=" ")
+
+    ```
+
+## **Merge Sort** 🧩
+
+Merge sort is a divide and conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one.
+
+### **Pseudocode**
+    
+    ```
+    mergeSort(arr[], l,  r)
+    If r > l
+        1. Find the middle point to divide the array into two halves:  
+            middle m = (l+r)/2
+        2. Call mergeSort for first half:   
+            Call mergeSort(arr, l, m)
+        3. Call mergeSort for second half:
+            Call mergeSort(arr, m+1, r)
+        4. Merge the two halves sorted in step 2 and 3:
+            Call merge(arr, l, m, r)
+    ```
+### **Algorithm**
+
+1. Divide the unsorted list into n sublists, each containing 1 element (a list of 1 element is considered sorted).
+2. Repeatedly merge sublists to produce new sorted sublists until there is only 1 sublist remaining. This will be the sorted list.
+
+### **Example**
+
+![Merge Sort](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Merge-Sort-Tutorial.png)
+
+### **Implementation**
+
+=== "C"
+    ```c
+    #include<stdio.h>
+    #include<stdlib.h>
+
+    void merge(int arr[],int l,int m,int r){
+        int i,j,k;
+        int n1=m-l+1;
+        int n2=r-m;
+
+        int L[n1],R[n2];
+
+        for (i = 0; i < n1; i++)
+        {
+            L[i]=arr[l+i];
+        }
+        for (j = 0; j < n2; j++)
+        {
+            R[j]=arr[m+1+j];
+        }
+        i=0;
+        j=0;
+        k=l;
+
+        while (i<n1 && j<n2)
+        {
+            if (L[i]<=R[j])
+            {
+                arr[k]=L[i];
+                i++;
+            }
+            else
+            {
+                arr[k]=R[j];
+                j++;
+            }
+            k++;
+        }
+        while (i<n1)
+        {
+            arr[k]=L[i];
+            i++;
+            k++;
+        }
+        while (j<n2)
+        {
+            arr[k]=R[j];
+            j++;
+            k++;
+        }
+        
+    }
+
+    void mergeSort(int arr[],int l,int r){
+        if (l<r)
+        {
+            int m=l+(r-l)/2;
+
+            mergeSort(arr,l,m);
+            mergeSort(arr,m+1,r);
+
+            merge(arr,l,m,r);
+        }
+        
+    }
+
+    void printArray(int arr[],int size){
+        for (int i = 0; i < size; i++)
+        {
+            printf("%d ",arr[i]);
+        }
+        printf("\n");
+    }
+
+    int main(){
+        int arr[]={12,11,13,5,6,7};
+        int size=sizeof(arr)/sizeof(arr[0]);
+
+        printf("Given array is \n");
+        printArray(arr,size);
+
+        mergeSort(arr,0,size-1);
+
+        printf("\nSorted array is \n");
+        printArray(arr,size);
+        return 0;
+    }
+
+    ```
+=== "C++"
+    ```cpp
+    #include<iostream>
+    using namespace std;
+
+    void merge(int arr[],int l,int m,int r){
+        int i,j,k;
+        int n1=m-l+1;
+        int n2=r-m;
+
+        int L[n1],R[n2];
+
+        for (i = 0; i < n1; i++)
+        {
+            L[i]=arr[l+i];
+        }
+        for (j = 0; j < n2; j++)
+        {
+            R[j]=arr[m+1+j];
+        }
+        i=0;
+        j=0;
+        k=l;
+
+        while (i<n1 && j<n2)
+        {
+            if (L[i]<=R[j])
+            {
+                arr[k]=L[i];
+                i++;
+            }
+            else
+            {
+                arr[k]=R[j];
+                j++;
+            }
+            k++;
+        }
+        while (i<n1)
+        {
+            arr[k]=L[i];
+            i++;
+            k++;
+        }
+        while (j<n2)
+        {
+            arr[k]=R[j];
+            j++;
+            k++;
+        }
+        
+    }
+
+    void mergeSort(int arr[],int l,int r){
+        if (l<r)
+        {
+            int m=l+(r-l)/2;
+
+            mergeSort(arr,l,m);
+            mergeSort(arr,m+1,r);
+
+            merge(arr,l,m,r);
+        }
+        
+    }
+
+    void printArray(int arr[],int size){
+        for (int i = 0; i < size; i++)
+        {
+            cout<<arr[i]<<" ";
+        }
+        cout<<endl;
+    }
+
+    int main(){
+        int arr[]={12,11,13,5,6,7};
+        int size=sizeof(arr)/sizeof(arr[0]);
+
+        cout<<"Given array is \n";
+        printArray(arr,size);
+
+        mergeSort(arr,0,size-1);
+
+        cout<<"\nSorted array is \n";
+        printArray(arr,size);
+        return 0;
+    }
+
+    ```
+
+=== "Python"
+    ```python
+    def mergeSort(arr):
+        if len(arr)>1:
+            mid=len(arr)//2
+            L=arr[:mid]
+            R=arr[mid:]
+
+            mergeSort(L)
+            mergeSort(R)
+
+            i=j=k=0
+
+            while i<len(L) and j<len(R):
+                if L[i]<R[j]:
+                    arr[k]=L[i]
+                    i+=1
+                else:
+                    arr[k]=R[j]
+                    j+=1
+                k+=1
+
+            while i<len(L):
+                arr[k]=L[i]
+                i+=1
+                k+=1
+
+            while j<len(R):
+                arr[k]=R[j]
+                j+=1
+                k+=1
+
+    def printList(arr):
+        for i in range(len(arr)):
+            print(arr[i],end=" ")
+        print()
+
+    if __name__=="__main__":
+        arr=[12,11,13,5,6,7]
+        print("Given array is")
+        printList(arr)
+        mergeSort(arr)
+        print("Sorted array is")
+        printList(arr)
+
+    ```
+
+    output
+
+    ```
+    Given array is
+    12 11 13 5 6 7
+    Sorted array is
+    5 6 7 11 12 13
+    ```
