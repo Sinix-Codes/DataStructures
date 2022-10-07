@@ -572,6 +572,7 @@ end procedure
 
     ```
 
+---
 ## **Merge Sort** 🧩
 
 Merge sort is a divide and conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one.
@@ -835,3 +836,14 @@ Merge sort is a divide and conquer algorithm. It divides the input array into tw
     Sorted array is
     5 6 7 11 12 13
     ```
+    ### **Time Complexity :watch: **
+
+    The time complexity of merge sort is O(nlogn) in all the 3 cases (worst, average and best) as merge sort always divides the array into two halves and take linear time to merge two halves.
+
+    ### **Space Complexity :watch: **
+
+    The space complexity of merge sort is O(n) as we need to create a temporary array to store the elements while merging.
+
+    ### **Applications :computer: **
+
+    - Merge Sort is useful for sorting linked lists in O(nLogn) time. In the case of linked lists, the case is different mainly due to the difference in memory allocation of arrays and linked lists. Unlike arrays, linked lists don’t have contiguous memory locations. Due to this difference, in arrays, we can do random access as elements are contiguous in memory. Let us say we have an integer (4-byte) array A and let the address of A[0] be x then to access A[i], we can directly access the memory at (x + i*4). Unlike arrays, we can not do random access in linked lists. Quick Sort requires a lot of this kind of access. In linked list to access i’th index, we have to travel each and every node from the head to i’th node as we don’t have a continuous block of memory. Therefore, the overhead increases for quicksort. Merge sort accesses data sequentially and the need of random access is low.
