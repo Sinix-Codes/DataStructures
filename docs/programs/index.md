@@ -1,6 +1,4 @@
 # Here are some programs that you can use to learn more about the language and data structures. 😎
-[]: # Language: markdown
-[]: # Path: docs\programs\index.md
 
 ---
 
