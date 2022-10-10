@@ -849,6 +849,111 @@ Merge sort is a divide and conquer algorithm. It divides the input array into tw
     - Merge Sort is useful for sorting linked lists in O(nLogn) time. In the case of linked lists, the case is different mainly due to the difference in memory allocation of arrays and linked lists. Unlike arrays, linked lists don’t have contiguous memory locations. Due to this difference, in arrays, we can do random access as elements are contiguous in memory. Let us say we have an integer (4-byte) array A and let the address of A[0] be x then to access A[i], we can directly access the memory at (x + i*4). Unlike arrays, we can not do random access in linked lists. Quick Sort requires a lot of this kind of access. In linked list to access i’th index, we have to travel each and every node from the head to i’th node as we don’t have a continuous block of memory. Therefore, the overhead increases for quicksort. Merge sort accesses data sequentially and the need of random access is low.
 ---
 
+### **Shell Sort 🐚**
+
+Shell sort is mainly a variation of insertion sort. In insertion sort, we move elements only one position ahead. When an element has to be moved far ahead, many movements are involved. The idea of shell sort is to allow exchange of far items. In shell sort, we make the array h-sorted for a large value of h. We keep reducing the value of h until it becomes 1. An array is said to be h-sorted if all sublists of every h’th element is sorted.
+
+### **Algorithm :pencil2: **
+- Choose a value for h, called the increment. Start with large values of h and work down to a value of 1.
+- Divide the list into h sublists, where each sublist consists of all elements that are a distance h apart.
+- Sort each sublist using an insertion sort.
+- Repeat steps 2 and 3 until the list is sorted.
+
+### **Implementation :computer: **
+
+=== "C"
+    ```c
+    #include<stdio.h>
+
+    void shellSort(int arr[],int n){
+        for (int gap = n/2; gap > 0; gap/=2)
+        {
+            for (int i = gap; i < n; i++)
+            {
+                int temp=arr[i];
+                int j;
+                for (j = i; j >= gap && arr[j-gap]>temp; j-=gap)
+                {
+                    arr[j]=arr[j-gap];
+                }
+                arr[j]=temp;
+            }
+            
+        }
+        
+    }
+
+    void printArray(int arr[],int n){
+        for (int i = 0; i < n; i++)
+        {
+            printf("%d ",arr[i]);
+        }
+        printf("\n");
+    }
+
+    int main(){
+        int arr[]={12,34,54,2,3};
+        int n=sizeof(arr)/sizeof(arr[0]);
+
+        printf("Given array is \n");
+        printArray(arr,n);
+
+        shellSort(arr,n);
+
+        printf("\nSorted array is \n");
+        printArray(arr,n);
+        return 0;
+    }
+
+    ```
+=== "C++"
+    ```cpp
+    #include<iostream>
+    using namespace std;
+
+    void shellSort(int arr[],int n){
+        for (int gap = n/2; gap > 0; gap/=2)
+        {
+            for (int i = gap; i < n; i++)
+            {
+                int temp=arr[i];
+                int j;
+                for (j = i; j >= gap && arr[j-gap]>temp; j-=gap)
+                {
+                    arr[j]=arr[j-gap];
+                }
+                arr[j]=temp;
+            }
+            
+        }
+        
+    }
+
+    void printArray(int arr[],int n){
+        for (int i = 0; i < n; i++)
+        {
+            cout<<arr[i]<<" ";
+        }
+        cout<<endl;
+    }
+
+    int main(){
+        int arr[]={12,34,54,2,3};
+        int n=sizeof(arr)/sizeof(arr[0]);
+
+        cout<<"Given array is \n";
+        printArray(arr,n);
+
+        shellSort(arr,n);
+
+        cout<<"\nSorted array is \n";
+        printArray(arr,n);
+        return 0;
+    }
+
+    ```
+
+---
 ### **Cocktail Sort 🍷 **
 
 Cocktail Sort is a variation of Bubble sort. The Bubble sort algorithm always traverses elements from left and moves the largest element to its correct position in first iteration and second largest in second iteration and so on. Cocktail Sort traverses through a given array in both directions alternatively.
