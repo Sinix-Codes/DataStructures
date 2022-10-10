@@ -849,7 +849,7 @@ Merge sort is a divide and conquer algorithm. It divides the input array into tw
     - Merge Sort is useful for sorting linked lists in O(nLogn) time. In the case of linked lists, the case is different mainly due to the difference in memory allocation of arrays and linked lists. Unlike arrays, linked lists don’t have contiguous memory locations. Due to this difference, in arrays, we can do random access as elements are contiguous in memory. Let us say we have an integer (4-byte) array A and let the address of A[0] be x then to access A[i], we can directly access the memory at (x + i*4). Unlike arrays, we can not do random access in linked lists. Quick Sort requires a lot of this kind of access. In linked list to access i’th index, we have to travel each and every node from the head to i’th node as we don’t have a continuous block of memory. Therefore, the overhead increases for quicksort. Merge sort accesses data sequentially and the need of random access is low.
 ---
 
-### **Shell Sort 🐚**
+## **Shell Sort 🐚**
 
 Shell sort is mainly a variation of insertion sort. In insertion sort, we move elements only one position ahead. When an element has to be moved far ahead, many movements are involved. The idea of shell sort is to allow exchange of far items. In shell sort, we make the array h-sorted for a large value of h. We keep reducing the value of h until it becomes 1. An array is said to be h-sorted if all sublists of every h’th element is sorted.
 
@@ -954,7 +954,7 @@ Shell sort is mainly a variation of insertion sort. In insertion sort, we move e
     ```
 
 ---
-### **Cocktail Sort 🍷 **
+## **Cocktail Sort 🍷 **
 
 Cocktail Sort is a variation of Bubble sort. The Bubble sort algorithm always traverses elements from left and moves the largest element to its correct position in first iteration and second largest in second iteration and so on. Cocktail Sort traverses through a given array in both directions alternatively.
 
