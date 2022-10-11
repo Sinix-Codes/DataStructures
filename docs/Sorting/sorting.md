@@ -4,6 +4,7 @@
 
 Bubble sort is a simple sorting algorithm. This sorting algorithm is comparison-based algorithm in which each pair of adjacent elements is compared and the elements are swapped if they are not in order. This algorithm is not suitable for large data sets as its average and worst case complexity are of Ο(n2) where n is the number of items.
 
+
 ### *Pseudocode* :page_facing_up:
 
 ```c
@@ -24,6 +25,10 @@ procedure bubbleSort( A : list of sortable items )
 end procedure
 
 ```
+
+### FLowchart :chart_with_upwards_trend:
+
+![Bubble sort flowchart](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif) 
 
 === "C"
 
@@ -144,6 +149,10 @@ end procedure
 
 ```
 
+### FLowchart :chart_with_upwards_trend:
+
+![Selection sort flowchart](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
+
 === "C"
     ```c
     #include <stdio.h>
@@ -257,6 +266,10 @@ end procedure
 
 ```
 
+### Flowchart :chart_with_upwards_trend:
+
+![Insertion sort flowchart](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
+
 === "C"
     ```c
     #include <stdio.h>
@@ -364,6 +377,11 @@ procedure radixsort( list )
 end procedure
 
 ```
+
+### Flowchart :chart_with_upwards_trend:
+
+![Radix sort flowchart](https://upload.wikimedia.org/wikipedia/commons/9/9d/Radix_sort_example.gif)
+
 
 === "C"
     ```c
@@ -599,6 +617,10 @@ Merge sort is a divide and conquer algorithm. It divides the input array into tw
 ### **Example**
 
 ![Merge Sort](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Merge-Sort-Tutorial.png)
+
+### Flowchart
+
+![Merge Sort Flowchart](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Merge-Sort-Algorithm.png)
 
 ### **Implementation**
 
@@ -859,6 +881,10 @@ Shell sort is mainly a variation of insertion sort. In insertion sort, we move e
 - Sort each sublist using an insertion sort.
 - Repeat steps 2 and 3 until the list is sorted.
 
+### Flowchart
+
+![Shell Sort Flowchart](https://media.geeksforgeeks.org/wp-content/cdn-uploads/shell-sort.png)
+
 ### **Implementation :computer: **
 
 === "C"
@@ -962,6 +988,10 @@ Cocktail Sort is a variation of Bubble sort. The Bubble sort algorithm always tr
 - Initially, we start the loop from left side and move the largest element to the end of the array.
 - Then, we start the loop from right side and move the smallest element to the beginning of the array.
 - This process goes on until the array is sorted.
+
+### **Flowchart**
+
+![Cocktail Sort Flowchart](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Cocktail-Sort.png)
 
 ### **Implementation :computer: **
 
