@@ -980,6 +980,184 @@ Shell sort is mainly a variation of insertion sort. In insertion sort, we move e
     ```
 
 ---
+
+## **Quick Sort :fast_forward:**
+
+Quick sort is a divide and conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.
+
+- Always pick first element as pivot.
+- Always pick last element as pivot (implemented below)
+- Pick a random element as pivot.
+- Pick median as pivot.
+
+### **Algorithm :pencil2: **
+
+- Pick an element, called a pivot, from the array.
+- Partitioning: reorder the array so that all elements with values less than the pivot come before the pivot, while all elements with values greater than the pivot come after it (equal values can go either way). After this partitioning, the pivot is in its final position. This is called the partition operation.
+- Recursively apply the above steps to the sub-array of elements with smaller values and separately to the sub-array of elements with greater values.
+
+
+### Flowchart
+
+![Quick Sort Flowchart](https://media.geeksforgeeks.org/wp-content/cdn-uploads/QuickSort2.png)
+
+### **Implementation :computer: **
+
+=== "C"
+    ```c
+    #include<stdio.h>
+
+    void swap(int *a,int *b){
+        int temp=*a;
+        *a=*b;
+        *b=temp;
+    }
+
+    int partition(int arr[],int low,int high){
+        int pivot=arr[high];
+        int i=low-1;
+        for (int j = low; j < high; j++)
+        {
+            if (arr[j]<pivot)
+            {
+                i++;
+                swap(&arr[i],&arr[j]);
+            }
+                
+        }
+        swap(&arr[i+1],&arr[high]);
+        return i+1;
+    }
+
+    void quickSort(int arr[],int low,int high){
+        if (low<high)
+        {
+            int pi=partition(arr,low,high);
+            quickSort(arr,low,pi-1);
+            quickSort(arr,pi+1,high);
+        }
+            
+    }
+
+    void printArray(int arr[],int n){
+        for (int i = 0; i < n; i++)
+        {
+            printf("%d ",arr[i]);
+        }
+        printf("\n");
+    }
+
+    int main(){
+        int arr[]={10,7,8,9,1,5};
+        int n=sizeof(arr)/sizeof(arr[0]);
+
+        quickSort(arr,0,n-1);
+        printf("Sorted array: \n");
+        printArray(arr,n);
+        return 0;
+    }
+    ```
+
+=== "C++"
+    ```cpp
+        #include<iostream>
+        using namespace std;
+
+        void swap(int *a,int *b){
+            int temp=*a;
+            *a=*b;
+            *b=temp;
+        }
+
+        int partition(int arr[],int low,int high){
+            int pivot=arr[high];
+            int i=low-1;
+            for (int j = low; j < high; j++)
+            {
+                if (arr[j]<pivot)
+                {
+                    i++;
+                    swap(&arr[i],&arr[j]);
+                }
+                
+            }
+            swap(&arr[i+1],&arr[high]);
+            return i+1;
+        }
+
+        void quickSort(int arr[],int low,int high){
+            if (low<high)
+            {
+                int pi=partition(arr,low,high);
+                quickSort(arr,low,pi-1);
+                quickSort(arr,pi+1,high);
+            }
+            
+        }
+
+        void printArray(int arr[],int n){
+            for (int i = 0; i < n; i++)
+            {
+                cout<<arr[i]<<" ";
+            }
+            cout<<endl;
+        }
+
+        int main(){
+            int arr[]={10,7,8,9,1,5};
+            int n=sizeof(arr)/sizeof(arr[0]);
+
+            quickSort(arr,0,n-1);
+            cout<<"Sorted array: \n";
+            printArray(arr,n);
+            return 0;
+        }
+
+    ```
+=== "Python"
+    ```python
+        def partition(arr,low,high):
+            i=low-1
+            pivot=arr[high]
+            for j in range(low,high):
+                if arr[j]<pivot:
+                    i+=1
+                    arr[i],arr[j]=arr[j],arr[i]
+            arr[i+1],arr[high]=arr[high],arr[i+1]
+            return i+1
+
+        def quickSort(arr,low,high):
+            if low<high:
+                pi=partition(arr,low,high)
+                quickSort(arr,low,pi-1)
+                quickSort(arr,pi+1,high)
+
+        def printArray(arr):
+            for i in range(len(arr)):
+                print(arr[i],end=" ")
+            print()
+
+        if __name__=="__main__":
+
+            arr=[10,7,8,9,1,5]
+            n=len(arr)
+
+            quickSort(arr,0,n-1)
+            print("Sorted array: ")
+            printArray(arr)
+
+    ```
+
+### **Time Complexity :alarm_clock: **
+- Worst Case Time Complexity [ Big-O ]: O(n^2)
+- Best Case Time Complexity [Big-omega]: O(n*log n)
+- Average Time Complexity [Big-theta]: O(n*log n)
+- Space Complexity: O(n)
+
+### **Applications :bulb: **
+- Quick Sort is used in many real life applications like in sorting a deck of cards, sorting files on a disk, sorting names in a phone book, sorting student records etc.
+
+---
 ## **Cocktail Sort 🍷 **
 
 Cocktail Sort is a variation of Bubble sort. The Bubble sort algorithm always traverses elements from left and moves the largest element to its correct position in first iteration and second largest in second iteration and so on. Cocktail Sort traverses through a given array in both directions alternatively.
