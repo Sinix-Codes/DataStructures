@@ -1,8 +1,7 @@
 # Data Structures Documentation by **Kunal Khairnar** 
 <img align="left" width="220" height="380" src="profilepic.jpg">
 
-## Hey Folks :wave:
-<a href="https://github.com/404"><img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"></a>
+## Hey Folks :wave:<a href="https://github.com/404"><img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"></a>
 
 ## I'm Kunal Khairnar, a 2nd year Computer Engineering Student at **Government Polytechnic Pune** :school:.
 ### I'm a **C**/**C++** and **Python** Developer :computer:.
