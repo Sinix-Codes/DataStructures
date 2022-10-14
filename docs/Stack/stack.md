@@ -38,109 +38,109 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
 
 ## **Code** :information_source:
 
--   **Using Array** :heavy_check_mark:
+**Using Array** :heavy_check_mark:
     
-==="C":
-     ```c
-    #include <stdio.h>
-    #include <stdlib.h>
-    #define MAX 1000
-        
-    int stack[MAX];
-    int top = -1;
-        
-    void push(int data)
-    {
-        if (top == MAX - 1)
+    ==="C":
+    ```c
+        #include <stdio.h>
+        #include <stdlib.h>
+        #define MAX 1000
+            
+        int stack[MAX];
+        int top = -1;
+            
+        void push(int data)
         {
-            printf("Stack Overflow");
-        }
-        else
-        {
-            top++;
-            stack[top] = data;
-        }
-    }
-        
-    void pop()
-    {
-        if (top == -1)
-        {
-            printf("Stack Underflow");
-        }
-        else
-        {
-            top--;
-        }
-    }
-        
-    int peek()
-    {
-        if (top == -1)
-        {
-            printf("Stack Underflow");
-            return -1;
-        }
-        else
-        {
-            return stack[top];
-        }
-    }
-        
-    void display()
-    {
-        if (top == -1)
-        {
-            printf("Stack Underflow");
-        }
-        else
-        {
-            for (int i = top; i >= 0; i--)
+            if (top == MAX - 1)
             {
-                printf("%d ", stack[i]);
+                printf("Stack Overflow");
+            }
+            else
+            {
+                top++;
+                stack[top] = data;
             }
         }
-    }
-        
-    int main()
-    {
-        int choice, data;
-        while (1)
+            
+        void pop()
         {
-            printf("\n1. Push");
-            printf("\n2. Pop");
-            printf("\n3. Peek");
-            printf("\n4. Display");
-            printf("\n5. Exit");
-            printf("\nEnter your choice: ");
-            scanf("%d", &choice);
-            switch (choice)
+            if (top == -1)
             {
-            case 1:
-                printf("Enter data: ");
-                scanf("%d", &data);
-                push(data);
-                break;
-            case 2:
-                pop();
-                break;
-            case 3:
-                printf("Top element is %d", peek());
+                printf("Stack Underflow");
+            }
+            else
+            {
+                top--;
+            }
+        }
+            
+        int peek()
+        {
+            if (top == -1)
+            {
+                printf("Stack Underflow");
+                return -1;
+            }
+            else
+            {
+                return stack[top];
+            }
+        }
+            
+        void display()
+        {
+            if (top == -1)
+            {
+                printf("Stack Underflow");
+            }
+            else
+            {
+                for (int i = top; i >= 0; i--)
+                {
+                    printf("%d ", stack[i]);
+                }
+            }
+        }
+            
+        int main()
+        {
+            int choice, data;
+            while (1)
+            {
+                printf("\n1. Push");
+                printf("\n2. Pop");
+                printf("\n3. Peek");
+                printf("\n4. Display");
+                printf("\n5. Exit");
+                printf("\nEnter your choice: ");
+                scanf("%d", &choice);
+                switch (choice)
+                {
+                case 1:
+                    printf("Enter data: ");
+                    scanf("%d", &data);
+                    push(data);
                     break;
-            case 4:
-                display();
-                break;
-            case 5:
-                exit(0);
-            default:
-                printf("Invalid choice");
+                case 2:
+                    pop();
+                    break;
+                case 3:
+                    printf("Top element is %d", peek());
+                        break;
+                case 4:
+                    display();
+                    break;
+                case 5:
+                    exit(0);
+                default:
+                    printf("Invalid choice");
+                }
             }
-        }
-            return 0;
-        }
+                return 0;
+            }
         ```
 
-==="C++":
+    ==="C++":
         ```cpp
         #include <iostream>
         #include <stdlib.h>
@@ -241,132 +241,132 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
         }
         ```
 
-==="Python":
+    ==="Python":
     ```python
-    stack = []
+        stack = []
 
-    def push(data):
-        stack.append(data)
+        def push(data):
+            stack.append(data)
 
-    def pop():
-        if len(stack) == 0:
-            print("Stack Underflow")
-        else:
-            stack.pop()
-    
-    def peek():
-        if len(stack) == 0:
-            print("Stack Underflow")
-        else:
-            return stack[-1]
+        def pop():
+            if len(stack) == 0:
+                print("Stack Underflow")
+            else:
+                stack.pop()
+        
+        def peek():
+            if len(stack) == 0:
+                print("Stack Underflow")
+            else:
+                return stack[-1]
 
-    def display():
-        if len(stack) == 0:
-            print("Stack Underflow")
-        else:
-            for i in range(len(stack)-1, -1, -1):
-                print(stack[i], end=" ")
+        def display():
+            if len(stack) == 0:
+                print("Stack Underflow")
+            else:
+                for i in range(len(stack)-1, -1, -1):
+                    print(stack[i], end=" ")
 
-    while True:
-        print("\n1. Push")
-        print("2. Pop")
-        print("3. Peek")
-        print("4. Display")
-        print("5. Exit")
-        choice = int(input("Enter your choice: "))
-        if choice == 1:
-            data = int(input("Enter data: "))
-            push(data)
-        elif choice == 2:
-            pop()
-        elif choice == 3:
-            print("Top element is", peek())
-        elif choice == 4:
-            display()
-        elif choice == 5:
-            break
-        else:
-            print("Invalid choice")
-    ```
-==="Java":
-    ```java
-    import java.util.Scanner;
+        while True:
+            print("\n1. Push")
+            print("2. Pop")
+            print("3. Peek")
+            print("4. Display")
+            print("5. Exit")
+            choice = int(input("Enter your choice: "))
+            if choice == 1:
+                data = int(input("Enter data: "))
+                push(data)
+            elif choice == 2:
+                pop()
+            elif choice == 3:
+                print("Top element is", peek())
+            elif choice == 4:
+                display()
+            elif choice == 5:
+                break
+            else:
+                print("Invalid choice")
+        ```
+    ==="Java":
+        ```java
+        import java.util.Scanner;
 
-    public class Stack {
-        static int MAX = 1000;
-        static int top = -1;
-        static int stack[] = new int[MAX];
+        public class Stack {
+            static int MAX = 1000;
+            static int top = -1;
+            static int stack[] = new int[MAX];
 
-        static void push(int data) {
-            if (top == MAX - 1) {
-                System.out.println("Stack Overflow");
-            } else {
-                top++;
-                stack[top] = data;
+            static void push(int data) {
+                if (top == MAX - 1) {
+                    System.out.println("Stack Overflow");
+                } else {
+                    top++;
+                    stack[top] = data;
+                }
             }
-        }
 
-        static void pop() {
-            if (top == -1) {
-                System.out.println("Stack Underflow");
-            } else {
-                top--;
+            static void pop() {
+                if (top == -1) {
+                    System.out.println("Stack Underflow");
+                } else {
+                    top--;
+                }
             }
-        }
 
-        static int peek() {
-            if (top == -1) {
-                System.out.println("Stack Underflow");
-                return -1;
-            } else {
-                return stack[top];
+            static int peek() {
+                if (top == -1) {
+                    System.out.println("Stack Underflow");
+                    return -1;
+                } else {
+                    return stack[top];
+                }
             }
-        }
 
-        static void display() {
-            if (top == -1) {
-                System.out.println("Stack Underflow");
-            } else {
-                for (int i = top; i >= 0; i--) {
-                    System.out.print(stack[i] + " ");
+            static void display() {
+                if (top == -1) {
+                    System.out.println("Stack Underflow");
+                } else {
+                    for (int i = top; i >= 0; i--) {
+                        System.out.print(stack[i] + " ");
+                    }
+                }
+            }
+
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+                int choice, data;
+                while (true) {
+                    System.out.println("\n1. Push");
+                    System.out.println("2. Pop");
+                    System.out.println("3. Peek");
+                    System.out.println("4. Display");
+                    System.out.println("5. Exit");
+                    System.out.print("Enter your choice: ");
+                    choice = sc.nextInt();
+                    switch (choice) {
+                        case 1:
+                            System.out.print("Enter data: ");
+                            data = sc.nextInt();
+                            push(data);
+                            break;
+                        case 2:
+                            pop();
+                            break;
+                        case 3:
+                            System.out.println("Top element is " + peek());
+                            break;
+                        case 4:
+                            display();
+                            break;
+                        case 5:
+                            System.exit(0);
+                        default:
+                            System.out.println("Invalid choice");
+                    }
                 }
             }
         }
-
-        public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-            int choice, data;
-            while (true) {
-                System.out.println("\n1. Push");
-                System.out.println("2. Pop");
-                System.out.println("3. Peek");
-                System.out.println("4. Display");
-                System.out.println("5. Exit");
-                System.out.print("Enter your choice: ");
-                choice = sc.nextInt();
-                switch (choice) {
-                    case 1:
-                        System.out.print("Enter data: ");
-                        data = sc.nextInt();
-                        push(data);
-                        break;
-                    case 2:
-                        pop();
-                        break;
-                    case 3:
-                        System.out.println("Top element is " + peek());
-                        break;
-                    case 4:
-                        display();
-                        break;
-                    case 5:
-                        System.exit(0);
-                    default:
-                        System.out.println("Invalid choice");
-                }
-            }
-        }
-    }
-    ```
+        ```
 
 
