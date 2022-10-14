@@ -39,107 +39,108 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
 ## **Code** :information_source:
 
 -   **Using Array** :heavy_check_mark:
-    ==="C":
-        ```c
-        #include <stdio.h>
-        #include <stdlib.h>
-        #define MAX 1000
+    
+==="C":
+     ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+    #define MAX 1000
         
-        int stack[MAX];
-        int top = -1;
+    int stack[MAX];
+    int top = -1;
         
-        void push(int data)
+    void push(int data)
+    {
+        if (top == MAX - 1)
         {
-            if (top == MAX - 1)
+            printf("Stack Overflow");
+        }
+        else
+        {
+            top++;
+            stack[top] = data;
+        }
+    }
+        
+    void pop()
+    {
+        if (top == -1)
+        {
+            printf("Stack Underflow");
+        }
+        else
+        {
+            top--;
+        }
+    }
+        
+    int peek()
+    {
+        if (top == -1)
+        {
+            printf("Stack Underflow");
+            return -1;
+        }
+        else
+        {
+            return stack[top];
+        }
+    }
+        
+    void display()
+    {
+        if (top == -1)
+        {
+            printf("Stack Underflow");
+        }
+        else
+        {
+            for (int i = top; i >= 0; i--)
             {
-                printf("Stack Overflow");
-            }
-            else
-            {
-                top++;
-                stack[top] = data;
+                printf("%d ", stack[i]);
             }
         }
+    }
         
-        void pop()
+    int main()
+    {
+        int choice, data;
+        while (1)
         {
-            if (top == -1)
+            printf("\n1. Push");
+            printf("\n2. Pop");
+            printf("\n3. Peek");
+            printf("\n4. Display");
+            printf("\n5. Exit");
+            printf("\nEnter your choice: ");
+            scanf("%d", &choice);
+            switch (choice)
             {
-                printf("Stack Underflow");
-            }
-            else
-            {
-                top--;
+            case 1:
+                printf("Enter data: ");
+                scanf("%d", &data);
+                push(data);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                printf("Top element is %d", peek());
+                    break;
+            case 4:
+                display();
+                break;
+            case 5:
+                exit(0);
+            default:
+                printf("Invalid choice");
             }
         }
-        
-        int peek()
-        {
-            if (top == -1)
-            {
-                printf("Stack Underflow");
-                return -1;
-            }
-            else
-            {
-                return stack[top];
-            }
-        }
-        
-        void display()
-        {
-            if (top == -1)
-            {
-                printf("Stack Underflow");
-            }
-            else
-            {
-                for (int i = top; i >= 0; i--)
-                {
-                    printf("%d ", stack[i]);
-                }
-            }
-        }
-        
-        int main()
-        {
-            int choice, data;
-            while (1)
-            {
-                printf("\n1. Push");
-                printf("\n2. Pop");
-                printf("\n3. Peek");
-                printf("\n4. Display");
-                printf("\n5. Exit");
-                printf("\nEnter your choice: ");
-                scanf("%d", &choice);
-                switch (choice)
-                {
-                case 1:
-                    printf("Enter data: ");
-                    scanf("%d", &data);
-                    push(data);
-                    break;
-                case 2:
-                    pop();
-                    break;
-                case 3:
-                    printf("Top element is %d", peek());
-                    break;
-                case 4:
-                    display();
-                    break;
-                case 5:
-                    exit(0);
-                default:
-                    printf("Invalid choice");
-                }
-            }
             return 0;
         }
         ```
 
-    ==="C++":
+==="C++":
         ```cpp
         #include <iostream>
         #include <stdlib.h>
@@ -240,7 +241,7 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
         }
         ```
 
-    ==="Python":
+==="Python":
     ```python
     stack = []
 
@@ -287,7 +288,7 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
         else:
             print("Invalid choice")
     ```
-    ==="Java":
+==="Java":
     ```java
     import java.util.Scanner;
 
@@ -369,4 +370,3 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
     ```
 
 
-    
