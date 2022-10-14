@@ -25,6 +25,7 @@ nav:
     - Searching: Searching/searching.md
     - Sorting: Sorting/sorting.md
     - Hashing: Hashing/Hashing.md
+    - Stack: Stack/stack.md
     - Linked-List: Linked_List/Linked_List.md
   - Programs:
     - programs/index.md
