@@ -40,7 +40,7 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
 
 **Using Array** :heavy_check_mark:
     
-    ==="C":
+==="C":
     ```c
         #include <stdio.h>
         #include <stdlib.h>
@@ -138,9 +138,9 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
             }
                 return 0;
             }
-        ```
+    ```
 
-    ==="C++":
+==="C++":
         ```cpp
         #include <iostream>
         #include <stdlib.h>
@@ -239,9 +239,9 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
             }
             return 0;
         }
-        ```
+    ```
 
-    ==="Python":
+==="Python":
     ```python
         stack = []
 
@@ -287,9 +287,9 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
                 break
             else:
                 print("Invalid choice")
-        ```
-    ==="Java":
-        ```java
+    ```
+==="Java":
+    ```java
         import java.util.Scanner;
 
         public class Stack {
@@ -367,6 +367,6 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
                 }
             }
         }
-        ```
+    ```
 
 
