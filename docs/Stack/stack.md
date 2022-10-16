@@ -44,100 +44,89 @@ A stack is a data structure that follows the **LIFO (Last In First Out)** princi
     ```c
         #include <stdio.h>
         #include <stdlib.h>
-        #define MAX 1000
-            
-        int stack[MAX];
-        int top = -1;
-            
-        void push(int data)
-        {
-            if (top == MAX - 1)
-            {
-                printf("Stack Overflow");
-            }
-            else
-            {
-                top++;
-                stack[top] = data;
-            }
-        }
-            
-        void pop()
-        {
-            if (top == -1)
-            {
-                printf("Stack Underflow");
-            }
-            else
-            {
-                top--;
-            }
-        }
-            
-        int peek()
-        {
-            if (top == -1)
-            {
-                printf("Stack Underflow");
-                return -1;
-            }
-            else
-            {
-                return stack[top];
-            }
-        }
-            
-        void display()
-        {
-            if (top == -1)
-            {
-                printf("Stack Underflow");
-            }
-            else
-            {
-                for (int i = top; i >= 0; i--)
-                {
-                    printf("%d ", stack[i]);
-                }
-            }
-        }
-            
+
+        int *stack,n,size,top=-1,i,ele,ind;
+
+        void push();
+        void pop();
+        void peek();
+
         int main()
         {
-            int choice, data;
-            while (1)
+            printf("\n\tStack Representation Using Array\n\t--------------------------------------");
+            printf("\nEnter the size of stack : ");
+            scanf("%d",&size);
+
+            stack = (int *)malloc(size * sizeof(int));
+
+            do
             {
-                printf("\n1. Push");
-                printf("\n2. Pop");
-                printf("\n3. Peek");
-                printf("\n4. Display");
-                printf("\n5. Exit");
-                printf("\nEnter your choice: ");
-                scanf("%d", &choice);
-                switch (choice)
+                printf("\nEnter which operation you want to perform :\n1 : push()\n2 : pop()\n3 : peek()\n4 : Stop");
+                scanf("%d",&i);
+                switch (i)
                 {
                 case 1:
-                    printf("Enter data: ");
-                    scanf("%d", &data);
-                    push(data);
+                    push();
                     break;
                 case 2:
                     pop();
                     break;
                 case 3:
-                    printf("Top element is %d", peek());
-                        break;
-                case 4:
-                    display();
+                    peek();
                     break;
-                case 5:
-                    exit(0);
+                case 4:
+                    break;
                 default:
-                    printf("Invalid choice");
+                    printf("Enter valid input : 1/2/3/4");
+                    break;
                 }
+            } while (i!=4);
+            
+            return 0;
+        }
+
+        void push()
+        {
+            if(top>=size-1)
+            {
+                printf("\nStack Overflow!");
             }
-                return 0;
+            else
+            {
+                printf("\nEnter element to push into Stack: ");
+                scanf("%d",&ele);
+                top++;
+                stack[top]=ele;
             }
+        }
+
+        void pop()
+        {
+            if(top<=-1)
+            {
+                printf("\nStack Underflow!");
+            }
+            else
+            {
+                printf("\n%d is poped from stack",stack[top]);
+                top--;
+            }
+        }
+
+        void peek()
+        {
+            if (top>=0)
+            {
+                for ( i = top; i >= 0; i--)
+                    printf("\n%d",stack[i]);
+            
+                printf("\nEnter next operation : ");
+            }
+            else
+            {
+                printf("\nStack is Empty!");
+            }
+        }
     ```
 
 ==="C++":
