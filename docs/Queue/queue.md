@@ -1,24 +1,24 @@
-# Queue 🧍‍♂️🧍‍♀️🧍‍♂️🧍‍♀️🧍‍♀️🧍‍♂️
+# **Queue** 🧍‍♂️🧍‍♀️🧍‍♂️🧍‍♀️🧍‍♀️🧍‍♂️
 
-## Introduction
+## **Introduction**
 
 Queue is a data structure that follows the FIFO (First In First Out) principle. It is a linear data structure that stores items in a sequential manner. The addition of new elements in a queue is at the rear end and the removal of existing elements takes place from the front end of the queue.
 
-## Basic Operations
+## **Basic Operations**
 
 - Enqueue: Adds an item to the queue. If the queue is full, then it is said to be an Overflow condition.
 - Dequeue: Removes an item from the queue. The items are popped in the same order in which they are pushed. If the queue is empty, then it is said to be an Underflow condition.
 
-## Applications
+## **Applications**
 
 - CPU Scheduling
 - Disk Scheduling
 - Handling of interrupts in real-time systems
 - Call Center phone systems use Queues to hold people calling them in an order, until a service representative is free.
 
-## Implementation
+## **Implementation**
 
-### Array Implementation
+### **Array Implementation**
 
 === "C"
 
@@ -197,7 +197,7 @@ Queue is a data structure that follows the FIFO (First In First Out) principle. 
     }
     ```
 
-### Linked List Implementation
+### **Linked List Implementation**
 
 === "C"
 
@@ -283,7 +283,7 @@ Queue is a data structure that follows the FIFO (First In First Out) principle. 
     }
     ```
 
-### Time Complexity
+### **Time Complexity**
 
 | Operation | Time Complexity |
 | --------- | --------------- |
@@ -292,7 +292,7 @@ Queue is a data structure that follows the FIFO (First In First Out) principle. 
 | Search    | O(n)            |
 | Access    | O(n)            |
 
-## Problems
+## **Problems**
 
 - [Leetcode - 232. Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/)
 - [Leetcode - 622. Design Circular Queue](https://leetcode.com/problems/design-circular-queue/)

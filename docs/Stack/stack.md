@@ -1,4 +1,4 @@
-# Stack 📚
+# **Stack** 📚
 
 A stack is a data structure that follows the **LIFO (Last In First Out)** principle. It is a linear data structure that stores items in a similar fashion to a pile of objects. A real-world example of a stack is a stack of plates. The plate that is at the top of the pile is the first one to be removed, i.e., the plate which has been placed at the bottommost position remains in the stack for the longest period of time. The insert and delete operations are often called **push** and **pop**.
 
