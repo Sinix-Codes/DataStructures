@@ -274,88 +274,82 @@ end procedure
 
 === "C"
     ```c
-    #include <stdio.h>
-    int main()
-    {
-        int arr[10], i, j, temp;
-        printf("Enter the elements of the array: ");
-        for (i = 0; i < 10; i++)
+    #include<stdio.h>
+    #include<stdlib.h>
+
+int main(){
+        int *arr, i, j,size,current, temp;
+        printf("Enter the size of the array: ");
+        scanf("%d",&size);
+        
+        arr = (int*)malloc(size*sizeof(int));
+
+        printf("Enter %d elements:",size);
+        for (i = 0; i < size; i++)
         {
             scanf("%d", &arr[i]);
         }
-        for (i = 0; i < 10; i++)
+
+        //logic
+        for ( i = 1; i < size; i++)
         {
-            for (j = i + 1; j < 10; j++)
+            current = arr[i];
+            j=i-1;
+            while(j>=0 && arr[j]>current)
             {
-                if (arr[i] > arr[j])
-                {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
+                arr[j+1]=arr[j];
+                j--;
             }
+            arr[j+1]=current;
         }
-        printf("The sorted array is: ");
-        for (i = 0; i < 10; i++)
+        
+         printf("The sorted array is: ");
+        for (i = 0; i < size; i++)
         {
             printf("%d ", arr[i]);
         }
-        return 0;
-    }
-
+   return 0;
+}
     ```
 === "C++"
     ```c++
     #include <iostream>
     using namespace std;
 
-    int main()
-    {
-        int arr[10], i, j, temp;
-        cout<<"Enter the elements of the array: ";
-        for (i = 0; i < 10; i++)
+    int main(){
+        int *arr, i, j,size,current, temp;
+        printf("Enter the size of the array: ");
+        scanf("%d",&size);
+        
+        arr = (int*)malloc(size*sizeof(int));
+
+        printf("Enter %d elements:",size);
+        for (i = 0; i < size; i++)
         {
             cin>>arr[i];
         }
-        for (i = 0; i < 10; i++)
+
+        //logic
+        for ( i = 1; i < size; i++)
         {
-            for (j = i + 1; j < 10; j++)
+            current = arr[i];
+            j=i-1;
+            while(j>=0 && arr[j]>current)
             {
-                if (arr[i] > arr[j])
-                {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
+                arr[j+1]=arr[j];
+                j--;
             }
+            arr[j+1]=current;
         }
-        cout<<"The sorted array is: ";
-        for (i = 0; i < 10; i++)
+        
+         printf("The sorted array is: ");
+        for (i = 0; i < size; i++)
         {
-            cout<<arr[i]<<" ";
+            cout << arr[i]);
         }
-        return 0;
-    }
-
+   return 0;
+}
     ```
-=== "Python"
-    ```python
-    arr = []
-    print("Enter the elements of the array: ")
-    for i in range(10):
-        arr.append(int(input()))
-    for i in range(10):
-        for j in range(i + 1, 10):
-            if arr[i] > arr[j]:
-                temp = arr[i]
-                arr[i] = arr[j]
-                arr[j] = temp
-    print("The sorted array is: ")
-    for i in range(10):
-        print(arr[i], end=" ")
-
-    ```
-
 ---
 
 ## **Radix sort** :abacus:
