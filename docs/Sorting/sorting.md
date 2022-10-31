@@ -156,89 +156,72 @@ end procedure
 ![Selection sort flowchart](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
 
 === "C"
-    ```c
+```c
     #include <stdio.h>
-    int main()
-    {
-        int arr[10], i, j, temp;
-        printf("Enter the elements of the array: ");
-        for (i = 0; i < 10; i++)
+        int main()
         {
-            scanf("%d", &arr[i]);
-        }
-        for (i = 0; i < 10; i++)
-        {
-            for (j = i + 1; j < 10; j++)
+            int a[100], n, i, j, position, swap;
+            printf("Enter number of elementsn");
+            scanf("%d", &n);
+            printf("Enter %d Numbersn", n);
+            for (i = 0; i < n; i++)
+                scanf("%d", &a[i]);
+            for(i = 0; i < n - 1; i++)
             {
-                if (arr[i] > arr[j])
+                position=i;
+                for(j = i + 1; j < n; j++)
                 {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+                    if(a[position] > a[j])
+                    position=j;
+                }
+                if(position != i)
+                {
+                    swap=a[i];
+                    a[i]=a[position];
+                    a[position]=swap;
                 }
             }
+            printf("Sorted Array:n");
+            for(i = 0; i < n; i++)
+                printf("%dn", a[i]);
+            return 0;
         }
-        printf("The sorted array is: ");
-        for (i = 0; i < 10; i++)
-        {
-            printf("%d ", arr[i]);
-        }
-        return 0;
-    }
-
-    ```
+```
 
 === "C++"
-    ```c++
+```c++
     #include <iostream>
     using namespace std;
 
     int main()
     {
-        int arr[10], i, j, temp;
-        cout<<"Enter the elements of the array: ";
-        for (i = 0; i < 10; i++)
+        int a[100], n, i, j, position, swap;
+        cout<<"Enter number of elementsn";
+        cin>>n;
+        cout<<"Enter "<<n<<" Numbersn";
+        for (i = 0; i < n; i++)
+            cin>>a[i];
+        for(i = 0; i < n - 1; i++)
         {
-            cin>>arr[i];
-        }
-        for (i = 0; i < 10; i++)
-        {
-            for (j = i + 1; j < 10; j++)
+            position=i;
+            for(j = i + 1; j < n; j++)
             {
-                if (arr[i] > arr[j])
-                {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
+                if(a[position] > a[j])
+                position=j;
+            }
+            if(position != i)
+            {
+                swap=a[i];
+                a[i]=a[position];
+                a[position]=swap;
             }
         }
-        cout<<"The sorted array is: ";
-        for (i = 0; i < 10; i++)
-        {
-            cout<<arr[i]<<" ";
-        }
+        cout<<"Sorted Array:n";
+        for(i = 0; i < n; i++)
+            cout<<a[i]<<"n";
         return 0;
     }
-
-    ```
-=== "Python"
-    ```python
-    arr = []
-    print("Enter the elements of the array: ")
-    for i in range(10):
-        arr.append(int(input()))
-    for i in range(10):
-        for j in range(i + 1, 10):
-            if arr[i] > arr[j]:
-                temp = arr[i]
-                arr[i] = arr[j]
-                arr[j] = temp
-    print("The sorted array is: ")
-    for i in range(10):
-        print(arr[i], end=" ")
-
-    ```
+```
 ---
 
 ## **Insertion sort** :put_litter_in_its_place:
