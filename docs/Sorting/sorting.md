@@ -190,37 +190,36 @@ end procedure
 
 === "C++"
 ```c++
-    #include <iostream>
-    using namespace std;
-
-    int main()
-    {
-        int a[100], n, i, j, position, swap;
-        cout<<"Enter number of elementsn";
-        cin>>n;
-        cout<<"Enter "<<n<<" Numbersn";
-        for (i = 0; i < n; i++)
-            cin>>a[i];
-        for(i = 0; i < n - 1; i++)
+        #include <iostream>
+        using namespace std;
+        int main()
         {
-            position=i;
-            for(j = i + 1; j < n; j++)
+            int a[100], n, i, j, position, swap;
+            cout<<"Enter number of elementsn";
+            cin>>n;
+            cout<<"Enter "<<n<<" Numbersn";
+            for (i = 0; i < n; i++)
+                cin>>a[i];
+            for(i = 0; i < n - 1; i++)
             {
-                if(a[position] > a[j])
-                position=j;
+                position=i;
+                for(j = i + 1; j < n; j++)
+                {
+                    if(a[position] > a[j])
+                    position=j;
+                }
+                if(position != i)
+                {
+                    swap=a[i];
+                    a[i]=a[position];
+                    a[position]=swap;
+                }
             }
-            if(position != i)
-            {
-                swap=a[i];
-                a[i]=a[position];
-                a[position]=swap;
-            }
+            cout<<"Sorted Array:n";
+            for(i = 0; i < n; i++)
+                cout<<a[i]<<"n";
+            return 0;
         }
-        cout<<"Sorted Array:n";
-        for(i = 0; i < n; i++)
-            cout<<a[i]<<"n";
-        return 0;
-    }
 ```
 ---
 
