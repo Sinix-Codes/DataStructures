@@ -158,28 +158,30 @@ end procedure
 === "C"
 ```c
     #include <stdio.h>
+    #include <stdlib.h>
         int main()
         {
-            int a[100], n, i, j, position, swap;
-            printf("Enter number of elementsn");
+            int *a, n, i, j, current, temp;
+            printf("Enter number of elements :");
             scanf("%d", &n);
-            printf("Enter %d Numbersn", n);
+
+            a = (int *)malloc(n * sizeof(int));
+
+            printf("Enter %d Numbers : ", n);
             for (i = 0; i < n; i++)
                 scanf("%d", &a[i]);
+
             for(i = 0; i < n - 1; i++)
             {
-                position=i;
+                int min_idx= arr[i];
                 for(j = i + 1; j < n; j++)
                 {
-                    if(a[position] > a[j])
-                    position=j;
+                    if(a[j] < a[min_idx])
+                        temp = a[j];
+                        a[j] = a[min_idx];
+                        a[min_idx] = temp;
                 }
-                if(position != i)
-                {
-                    swap=a[i];
-                    a[i]=a[position];
-                    a[position]=swap;
-                }
+               
             }
             printf("Sorted Array:n");
             for(i = 0; i < n; i++)
