@@ -275,7 +275,7 @@ int main(){
         }
 
         //logic
-        for ( i = 1; i < size; i++)
+        for ( i = 0; i < size; i++)
         {
             current = arr[i];
             j=i-1;
