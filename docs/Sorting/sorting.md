@@ -173,7 +173,7 @@ end procedure
 
             for(i = 0; i < n - 1; i++)
             {
-                int min_idx= arr[i];
+                int min_idx= i;
                 for(j = i + 1; j < n; j++)
                 {
                     if(a[j] < a[min_idx])
