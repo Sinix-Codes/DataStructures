@@ -22,180 +22,288 @@ Queue is a data structure that follows the FIFO (First In First Out) principle. 
 
 === "C"
 
-    ```c
+```c
+
+// Program for queue operations using array
+
     #include <stdio.h>
     #include <stdlib.h>
 
-    #define MAX 5
+    #define MAX 5 //size of queue
 
     int queue[MAX];
 
     int front = -1;
+
     int rear = -1;
 
-    void enqueue(int data)
-    {
-        if (rear == MAX - 1)
-        {
-            printf("Queue is full\n");
-        }
-        else if (front == -1 && rear == -1)
-        {
-            front = rear = 0;
-            queue[rear] = data;
-        }
-        else
-        {
-            rear++;
-            queue[rear] = data;
-        }
-    }
+    void insert()
 
-    void dequeue()
+    {
+
+        int item;
+
+    if (front == 0 && rear == MAX - 1)
+
+        printf("\n Queue Overflow "); // Overflow
+
+    else
     {
         if (front == -1 && rear == -1)
         {
-            printf("Queue is empty\n");
+            printf("Queue is empty, Inserting first element");
+            front = front+1;
+            rear = rear+1;
         }
-        else if (front == rear)
+        else if(rear == MAX-1)
         {
-            front = rear = -1;
+            rear = 0;
         }
         else
         {
-            front++;
+            rear = rear+1;
         }
+
+
+        printf("\n Input the element for insertion in queue : "); // Insertion
+
+        scanf("%d", &item);
+
+        queue[rear] = item;
+        }
+
+    }
+
+    void remove()
+    {
+    if (front == -1 || rear == -1)
+    {
+    printf("\n Queue Underflow "); // Underflow
+    return;
+    }
+    else if(front == rear)
+    {
+    printf("\n Deleted element is %d", queue[front]);
+    front = -1;
+    rear = -1;
+    }
+    else if(front == MAX-1)
+    {
+    printf("\n Deleted element is %d", queue[front]);
+    front = 0;
+    }
+    else
+    {
+    printf("\n Deleted element is %d", queue[front]);
+    front = front+1;
+    }
     }
 
     void display()
     {
-        if (front == -1 && rear == -1)
-        {
-            printf("Queue is empty\n");
-        }
-        else
-        {
-            for (int i = front; i <= rear; i++)
-            {
-                printf("%d ", queue[i]);
-            }
-            printf("\n");
-        }
+    int i;
+    if (front == -1 && rear == -1)
+    {
+    printf("\n Queue is empty ");
     }
-
+    else
+    {
+    printf("\n Queue is : ");
+    if(front <= rear)
+    {
+    for (i = front; i <= rear; i++)
+    {
+    printf("%d ", queue[i]);
+    }
+    }
+    else
+    {
+    for(i=front;i<MAX;i++)
+    {
+    printf("%d ",queue[i]);
+    }
+    for(i=0;i<=rear;i++)
+    {
+    printf("%d ",queue[i]);
+    }
+    }
+    }
+    }
 
     int main()
     {
-        enqueue(1);
-        enqueue(2);
-        enqueue(3);
-        enqueue(4);
-        enqueue(5);
-        enqueue(6);
-        display();
-        dequeue();
-        dequeue();
-        display();
-        enqueue(6);
-        enqueue(7);
-        display();
-        return 0;
-    }
-    ```
-
-=== "C++"
-
-    ```cpp
-
-    #include <iostream>
-    #include <vector>
-
-    using namespace std;
-
-    class Queue
+    int choice;
+    while (1)
     {
-    private:
-        vector<int> v;
-        int front;
-        int rear;
+    printf("\n1. Insert element to queue "); // Insertion
+    printf("\n2. Delete element from queue "); // Deletion
+    printf("\n3. Display all elements of queue "); // Display
+    printf("\n4. Quit "); // Exit
+    printf("\nEnter your choice : "); // Choice
+    scanf("%d", &choice);
 
-    public:
-        Queue()
+        switch (choice)
         {
-            front = -1;
-            rear = -1;
-        }
+        case 1:
+            insert();
+            break;
 
-        void enqueue(int data)
-        {
-            if (rear == v.size() - 1)
-            {
-                cout << "Queue is full" << endl;
-            }
-            else if (front == -1 && rear == -1)
-            {
-                front = rear = 0;
-                v.push_back(data);
-            }
-            else
-            {
-                rear++;
-                v.push_back(data);
-            }
-        }
+        case 2:
+            remove();
+            break;
 
-        void dequeue()
-        {
-            if (front == -1 && rear == -1)
-            {
-                cout << "Queue is empty" << endl;
-            }
-            else if (front == rear)
-            {
-                front = rear = -1;
-            }
-            else
-            {
-                front++;
-            }
-        }
+        case 3:
+            display();
+            break;
 
-        void display()
-        {
-            if (front == -1 && rear == -1)
-            {
-                cout << "Queue is empty" << endl;
-            }
-            else
-            {
-                for (int i = front; i <= rear; i++)
-                {
-                    cout << v[i] << " ";
-                }
-                cout << endl;
-            }
-        }
-    };
+        case 4:
+            exit(1);
 
-    int main()
-    {
-        Queue q;
-        q.enqueue(1);
-        q.enqueue(2);
-        q.enqueue(3);
-        q.enqueue(4);
-        q.enqueue(5);
-        q.enqueue(6);
-        q.display();
-        q.dequeue();
-        q.dequeue();
-        q.display();
-        q.enqueue(6);
-        q.enqueue(7);
-        q.display();
-        return 0;
+        default:
+            printf("\nWrong choice "); // Wrong choice
+            break;
+        }
     }
-    ```
+    return 0;
+
+    } // End of main
+
+```
+
+```
+
+     OUTPUT
+
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 1
+
+Input the element for insertion in queue : 4
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 1
+
+Input the element for insertion in queue : 9
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 1
+
+Input the element for insertion in queue : 4
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 3
+
+Queue is : 4 9 4
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 1
+
+Input the element for insertion in queue : 7
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 1
+
+Input the element for insertion in queue : 5
+
+1.  Insert element to queue
+2.  Delete element from queue
+3.  Display all elements of queue
+4.  Quit
+    Enter your choice : 1
+
+        Input the element for insertion in queue : 6
+
+        Queue Overflow
+
+5.  Insert element to queue
+6.  Delete element from queue
+7.  Display all elements of queue
+8.  Quit
+    Enter your choice : 2
+
+Deleted element is 4
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 3
+
+Queue is : 9 4 7 5
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 2
+
+Deleted element is 9
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 2
+
+Deleted element is 4
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 2
+
+Deleted element is 7
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 2
+
+Deleted element is 5
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 2
+
+Queue Underflow
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 3
+
+Queue is empty
+
+1. Insert element to queue
+2. Delete element from queue
+3. Display all elements of queue
+4. Quit
+   Enter your choice : 4
+
+```
 
 ### **Linked List Implementation**
 
@@ -299,4 +407,3 @@ Queue is a data structure that follows the FIFO (First In First Out) principle. 
 - [Leetcode - 933. Number of Recent Calls](https://leetcode.com/problems/number-of-recent-calls/)
 - [Leetcode - 346. Moving Average from Data Stream](https://leetcode.com/problems/moving-average-from-data-stream/)
 - [Leetcode - 225. Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
-
