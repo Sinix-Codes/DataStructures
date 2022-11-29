@@ -1,4 +1,4 @@
-#Linked List 🖇️
+# Linked List 🖇️
 
 A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers.
 
@@ -8,7 +8,7 @@ A linked list is a linear data structure, in which the elements are not stored a
 - Doubly Linked List
 - Circular Linked List
 
-## Singly Linked List
+# 1. Singly Linked List  🔗
 
 C program to create a singly linked list.
 
@@ -442,4 +442,345 @@ Enter which operation you want to perform:
 Enter the element to be inserted: 5
 Enter the position: 2
 Your LL is: 7 5 4 1 4 8 */
+```
+
+
+# 2. Circular Linked List 🔁
+
+Circular Linked List is a variation of Linked List in which the last node points to the first node. This makes the last node act as a sentinel, or a guard. This is useful in situations where there is a need to traverse the list in both directions. For example, in a menu based program, the user can go to the previous menu by going back in the list.
+
+### Circular Linked List Implementation
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+void traverse()
+{
+    struct node *p_next;
+    if (head == NULL)
+    {
+        printf("List is empty");
+    }
+    else
+    {
+        p_next = head;
+        do
+        {
+            printf("%d ", p_next->data);
+            p_next = p_next->next;
+        } while (p_next != head);
+    }
+}
+
+void insertAtBeginning(int n)
+{
+    struct node *new_node, *p_next;
+    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node->data = n;
+    if (head == NULL)
+    {
+        head = new_node;
+        new_node->next = head;
+    }
+    else
+    {
+        p_next = head;
+        while (p_next->next != head)
+        {
+            p_next = p_next->next;
+        }
+        p_next->next = new_node;
+        new_node->next = head;
+        head = new_node;
+    }
+}
+
+void insertAtEnd(int n)
+{
+    struct node *new_node, *p_next;
+    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node->data = n;
+    if (head == NULL)
+    {
+        head = new_node;
+        new_node->next = head;
+    }
+    else
+    {
+        p_next = head;
+        while (p_next->next != head)
+        {
+            p_next = p_next->next;
+        }
+        p_next->next = new_node;
+        new_node->next = head;
+    }
+}
+
+void insertAtPosition(int n, int pos)
+{
+    struct node *new_node, *p_next;
+    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node->data = n;
+    if (head == NULL)
+    {
+        head = new_node;
+        new_node->next = head;
+    }
+    else
+    {
+        p_next = head;
+        for (int i = 1; i < pos - 1; i++)
+        {
+            p_next = p_next->next;
+        }
+        new_node->next = p_next->next;
+        p_next->next = new_node;
+    }
+}
+
+void insertAfterNode(int n, int key)
+{
+    struct node *new_node, *p_next;
+    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node->data = n;
+    if (head == NULL)
+    {
+        head = new_node;
+        new_node->next = head;
+    }
+    else
+    {
+        p_next = head;
+        do
+        {
+            if (p_next->data == key)
+            {
+                new_node->next = p_next->next;
+                p_next->next = new_node;
+                if (p_next == head)
+                {
+                    head = new_node;
+                }
+                break;
+            }
+            p_next = p_next->next;
+        } while (p_next != head);
+    }
+}
+
+void deleteAtBeginning()
+{
+    struct node *p_next;
+    if (head == NULL)
+    {
+        printf("List is empty");
+    }
+    else
+    {
+        p_next = head;
+        while (p_next->next != head)
+        {
+            p_next = p_next->next;
+        }
+        p_next->next = head->next;
+        free(head);
+        head = p_next->next;
+    }
+}
+
+void deleteAtEnd()
+{
+    struct node *p_next, *tmp;
+    if (head == NULL)
+    {
+        printf("List is empty");
+    }
+    else
+    {
+        p_next = head;
+        while (p_next->next != head)
+        {
+            tmp = p_next;
+            p_next = p_next->next;
+        }
+        tmp->next = head;
+        free(p_next);
+    }
+}
+
+void deleteAtPosition(int pos)
+{
+    struct node *p_next, *tmp;
+    if (head == NULL)
+    {
+        printf("List is empty");
+    }
+    else
+    {
+        p_next = head;
+        for (int i = 1; i < pos; i++)
+        {
+            tmp = p_next;
+            p_next = p_next->next;
+        }
+        tmp->next = p_next->next;
+        free(p_next);
+    }
+}
+
+void deleteByKey(int key)
+{
+    struct node *p_next, *tmp;
+    if (head == NULL)
+    {
+        printf("List is empty");
+    }
+    else
+    {
+        p_next = head;
+        do
+        {
+            if (p_next->data == key)
+            {
+                tmp->next = p_next->next;
+                free(p_next);
+                break;
+            }
+            tmp = p_next;
+            p_next = p_next->next;
+        } while (p_next != head);
+    }
+}
+
+int main()
+{
+    int choice, n, pos, key;
+    do
+    {
+        printf("\n1. Traverse\n2. Insert at Beginning\n3. Insert at End\n4. Insert at Position\n5. Insert after a given node\n6. Delete at Beginning\n7. Delete at End\n8. Delete at Position\n9. Delete by Key\n10. Exit\n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            traverse();
+            break;
+        case 2:
+            printf("\nEnter the element to be inserted: ");
+            scanf("%d", &n);
+            insertAtBeginning(n);
+            break;
+        case 3:
+            printf("\nEnter the element to be inserted: ");
+            scanf("%d", &n);
+            insertAtEnd(n);
+            break;
+        case 4:
+            printf("\nEnter the element to be inserted: ");
+            scanf("%d", &n);
+            printf("Enter the position: ");
+            scanf("%d", &pos);
+            insertAtPosition(n, pos);
+            break;
+        case 5:
+            printf("\nEnter the element to be inserted: ");
+            scanf("%d", &n);
+            printf("Enter the key: ");
+            scanf("%d", &key);
+            insertAfterNode(n, key);
+            break;
+        case 6:
+            deleteAtBeginning();
+            break;
+        case 7:
+            deleteAtEnd();
+            break;
+        case 8:
+            printf("\nEnter the position: ");
+            scanf("%d", &pos);
+            deleteAtPosition(pos);
+            break;
+        case 9:
+            printf("\nEnter the key: ");
+            scanf("%d", &key);
+            deleteByKey(key);
+            break;
+        case 10:
+            exit(0);
+        default:
+            printf("\nInvalid choice");
+        }
+    } while (choice != 10);
+    return 0;
+}
+```
+ ``` 
+ Output:
+
+    1. Traverse
+    2. Insert at Beginning
+    3. Insert at End
+    4. Insert at Position
+    5. Insert after a given node
+    6. Delete at Beginning
+    7. Delete at End
+    8. Delete at Position
+    9. Delete by Key
+    10. Exit
+
+    1
+    List is empty
+
+    1. Traverse
+    2. Insert at Beginning
+    3. Insert at End
+    4. Insert at Position
+    5. Insert after a given node
+    6. Delete at Beginning
+    7. Delete at End
+    8. Delete at Position
+    9. Delete by Key
+    10. Exit
+
+    2
+    Enter the element to be inserted: 1
+
+    1. Traverse
+    2. Insert at Beginning
+    3. Insert at End
+    4. Insert at Position
+    5. Insert after a given node
+    6. Delete at Beginning
+    7. Delete at End
+    8. Delete at Position
+    9. Delete by Key
+    10. Exit
+
+    2
+    Enter the element to be inserted: 2
+    2 1
+
+    1. Traverse
+    2. Insert at Beginning
+    3. Insert at End
+    4. Insert at Position
+    5. Insert after a given node
+    6. Delete at Beginning
+    7. Delete at End
+    8. Delete at Position
+    9. Delete by Key
+    10. Exit
+
+    3
+    Enter the element to be inserted: 3
+    2 1 3
 ```
