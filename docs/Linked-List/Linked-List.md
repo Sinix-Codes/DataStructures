@@ -22,6 +22,7 @@ struct Node
     struct Node *next;
 };
 
+struct Node *head;
 
 struct Node* search(struct Node *head, int x)
 {
@@ -228,6 +229,17 @@ struct Node * sort(struct Node *head)
     return head;
 }
 
+void display(struct Node *head)
+{
+    printf("\nYour Linked List is: ");
+    struct Node *current = head;
+    while (current != NULL)
+    {
+        printf("%d ", current->data);
+        current = current->next;
+    }
+}
+
 // Driver's code
 int main()
 {
@@ -264,12 +276,9 @@ int main()
     switch (temp)
     {
 
-    case 1:
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+    case 1: 
+        printf("Traversing the linked list: ");
+        display(head);
         break;
 
     case 2:
@@ -283,7 +292,7 @@ int main()
         printf("Enter the element to be searched: ");
         scanf("%d", &n);
         if( searchSorted(head, n)!= NULL)
-        printf("\n%d is present in the list", head->data);
+            printf("\n%d is present in the list", head->data);
         break;
 
     case 4:
@@ -294,22 +303,14 @@ int main()
         printf("Enter the element to be inserted: ");
         scanf("%d", &n);
         head = insertAtBeginning(head, n);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        display(head);
         break;
 
     case 6:
         printf("Enter the element to be inserted: ");
         scanf("%d", &n);
         head = insertAtEnd(head, n);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        display(head);
         break;
 
     case 7:
@@ -318,11 +319,7 @@ int main()
         printf("Enter the position: ");
         scanf("%d", &temp);
         head = insertAtPosition(head, n, temp);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        display(head);
         break;
 
     case 8:
@@ -331,60 +328,36 @@ int main()
         printf("Enter the position: ");
         scanf("%d", &temp);
         head = insertAfterNode(head, n, temp);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        display(head);
         break;
 
     case 9:
         head = deleteAtBeginning(head);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        display(head);
         break;
     
     case 10:
         head = deleteAtEnd(head);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        display(head);
         break;
 
     case 11:
         printf("Enter the position: ");
         scanf("%d", &temp);
         head = deleteAtPosition(head, temp);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        display(head);
         break;
     
     case 12:
         printf("Enter the element to be deleted: ");
         scanf("%d", &n);
         head = deleteByKey(head, n);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        display(head);
         break;
     
     case 13:
         head = sort(head);
-        printf("Your LL is: ");
-        for (p_next = head; p_next != NULL; p_next = p_next->next)
-        {
-            printf("%d ", p_next->data);
-        }
+        
         break;
 
     case 14:
