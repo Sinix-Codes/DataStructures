@@ -196,6 +196,28 @@ struct Node * deleteByKey(struct Node *head, int key)
     return head;
 }
 
+// delete before node
+struct Node * deleteBeforeNode(struct Node *head, int key)
+{
+    struct Node *current = head;
+    struct Node *prev = NULL;
+    struct Node *prev2 = NULL;
+    if(head == NULL)
+    {
+        printf("List is empty");
+        return head;
+    }
+    while (current->data != key)
+    {
+        prev2 = prev;
+        prev = current;
+        current = current->next;
+    }
+    prev2->next = current;
+    free(prev);
+    return head;
+}
+
 // sort the linked list
 struct Node * sort(struct Node *head)
 {
@@ -209,7 +231,7 @@ struct Node * sort(struct Node *head)
     }
     else
     {
-        while (current != NULL)
+        while (current->next != NULL)
         {
             index = current->next;
 
@@ -758,3 +780,107 @@ int main()
     Enter the element to be inserted: 3
     2 1 3
 ```
+
+## Doubly Linked List
+
+A doubly linked list is a linked data structure that consists of a set of sequentially linked records called nodes. Each node contains two fields, called links, that are references to the previous and to the next node in the sequence of nodes. The beginning and ending nodes' previous and next links, respectively, point to some kind of terminator, typically a sentinel node or null, to facilitate traversal of the list. If there is only one sentinel node, then the list is circularly linked via the sentinel node. It can be conceptualized as two singly linked lists formed from the same data items, but in opposite sequential orders.
+
+### Insertion
+
+```c
+void insertAtBeginning(int n)
+{
+    struct node *new_node;
+    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node->data = n;
+    if (head == NULL)
+    {
+        head = new_node;
+        new_node->next = NULL;
+        new_node->prev = NULL;
+    }
+    else
+    {
+        new_node->next = head;
+        new_node->prev = NULL;
+        head->prev = new_node;
+        head = new_node;
+    }
+}
+
+void insertAtEnd(int n)
+{
+    struct node *new_node, *p_next;
+    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node->data = n;
+    if (head == NULL)
+    {
+        head = new_node;
+        new_node->next = NULL;
+        new_node->prev = NULL;
+    }
+    else
+    {
+        p_next = head;
+        while (p_next->next != NULL)
+        {
+            p_next = p_next->next;
+        }
+        p_next->next = new_node;
+        new_node->next = NULL;
+        new_node->prev = p_next;
+    }
+}
+
+void insertAtPosition(int n, int pos)
+{
+    struct node *new_node, *p_next, *tmp;
+    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node->data = n;
+    if (head == NULL)
+    {
+        head = new_node;
+        new_node->next = NULL;
+        new_node->prev = NULL;
+    }
+    else
+    {
+        p_next = head;
+        for (int i = 1; i < pos; i++)
+        {
+            tmp = p_next;
+            p_next = p_next->next;
+        }
+        tmp->next = new_node;
+        new_node->next = p_next;
+        new_node->prev = tmp;
+        p_next->prev = new_node;
+    }
+}
+
+void insertAfterNode(int n, int key)
+{
+    struct node *new_node, *p_next;
+    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node->data = n;
+    if (head == NULL)
+    {
+        head = new_node;
+        new_node->next = NULL;
+        new_node->prev = NULL;
+    }
+    else
+    {
+        p_next = head;
+        while (p_next->data != key)
+        {
+            p_next = p_next->next;
+        }
+        new_node->next = p_next->next;
+        new_node->prev = p_next;
+        p_next->next = new_node;
+        new_node->next->prev = new_node;
+    }
+}
+```
+
