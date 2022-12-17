@@ -28,6 +28,7 @@ nav:
     - Stack: Stack/stack.md
     - Queue: Queue/queue.md
     - Linked-List: Linked-List/Linked-List.md
+    - Mini_Project: Mini_Project/Sudoku.md
   - Programs:
     - programs/index.md
       
