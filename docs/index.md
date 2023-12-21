@@ -3,8 +3,8 @@
 
 ## Hey Folks :wave:
 
-## I'm Kunal Khairnar, a 2nd year Computer Engineering Student at **Government Polytechnic Pune** :school:.
-### I'm a **C**/**C++** and **Python** Developer :computer:.
+## I'm Kunal Khairnar, Computer Engineering Student at **Government Polytechnic Pune** :school:.
+### I'm a **C**/**C++**, **Java**,**JavaScript** and **Python** Developer :computer:.
 ### I'm also a **Competitive Programmer** :trophy:.
 ### I'm also a **Web Developer** :globe_with_meridians:.
 ### I'm also a **Data Structures and Algorithms** Enthusiast :books:.
