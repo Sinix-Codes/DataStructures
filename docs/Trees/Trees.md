@@ -47,6 +47,143 @@ A binary search tree is a binary tree in which the value of each node is greater
 -  The right subtree of a node contains only nodes with keys greater than the node’s key.
 -  The left and right subtree each must also be a binary search tree.
 -  There must be no duplicate nodes.
+---
+- C Program
+```c
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+        struct node*left;
+        int data;
+        struct node*right;
+};
+
+struct node*root=NULL;
+
+void insert(int data)
+{
+        struct node*newnode = (struct node*)malloc(sizeof(struct node));
+        newnode->data=data;
+        newnode->left=NULL;
+        newnode->right=NULL;
+
+        if(root == NULL)
+        {
+                root = newnode;
+        }
+        else
+        {
+                struct node*temp = root;
+                while(1)
+                {
+                        if(data < temp->data)
+                        {
+                                if(temp->left == NULL)
+                                {
+                                        temp->left = newnode;
+                                        break;
+                                }
+                                else
+                                {
+                                        temp = temp->left;
+                                }
+                        }
+                        else
+                        {
+                                if(temp->right == NULL)
+                                {
+                                        temp->right = newnode;
+                                        break;
+                                }
+                                else
+                                {
+                                        temp = temp->right;
+                                }
+                        }
+                }
+        }
+}
+
+void search()
+{
+        int key;
+        printf("\nEnter element to search :");
+        scanf("%d",&key);
+        struct node*temp = root;
+                while(1)
+                {
+                        if(key < temp->data)
+                        {
+                                if(temp->left == NULL)
+                                {
+                                        printf("\nElement not found!");
+                                        break;
+                                }
+                                else if(temp->left->data == key)
+                                {
+                                        printf("\nElement found");
+                                        return;
+                                }
+                                else
+                                {
+                                        temp = temp->left;
+                                }
+                        }
+                        else
+                        {
+                                if(temp->right == NULL)
+                                {
+                                        printf("\nElement not found!");
+                                        break;
+                                }
+                                else if(temp->right->data == key)
+                                {
+                                        printf("\nElement found");
+                                        return;
+                                }
+                                else
+                                {
+                                        temp = temp->right;
+                                }
+                        }
+                }
+}
+
+int main()
+{
+        int key,data,n;
+        printf("\nEnter how many numbers you want to insert: ");
+        scanf("%d",&n);
+        for(int i=0;i<n;i++)
+        {
+                printf("\nEnter data : ");
+                scanf("%d",&data);
+                insert(data);
+        }
+        search();
+}
+```
+- Output
+```
+Enter how many numbers you want to insert: 6
+
+Enter data : 3
+
+Enter data : 1
+
+Enter data : 6
+
+Enter data : 4
+
+Enter data : 2
+
+Enter data : 9
+
+Enter element to search :4
+
+Element found
+```
 
 ## Complete Binary Tree
 
@@ -140,4 +277,241 @@ eg. 3+(5+9)*2
 2. Traverse the right subtree, i.e., call Postorder(right-subtree)
 3. Visit the root.
 
+---
+
+```
+         6
+        / \
+       /   \
+      /     \
+     1       7
+    / \       \
+   0   2       8
+        \       \
+         5       9
+```
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+        struct node* left;
+        int data;
+        struct node* right;
+};
+
+struct node*root=NULL;
+
+void insert(int data)
+{
+        struct node*newnode = (struct node*)malloc(sizeof(struct node));
+        newnode->data=data;
+        newnode->left=NULL;
+        newnode->right=NULL;
+
+        if(root == NULL)
+        {
+                root = newnode;
+        }
+        else
+        {
+                struct node*temp = root;
+                while(1)
+                {
+                        if(data < temp->data)
+                        {
+                                if(temp->left == NULL)
+                                {
+                                        temp->left = newnode;
+                                        break;
+                                }
+                                else
+                                {
+                                        temp = temp->left;
+                                }
+                        }
+                        else
+                        {
+                                if(temp->right == NULL)
+                                {
+                                        temp->right = newnode;
+                                        break;
+                                }
+                                else
+                                {
+                                        temp = temp->right;
+                                }
+                        }
+                }
+        }
+}
+
+void preorder(struct node* temp)
+{
+     if(temp!=NULL)
+     {
+        printf("%d",&temp->data);
+        preorder(temp->left);
+        preorder(temp->right);
+     }   
+}
+
+void inorder(struct node* temp)
+{
+     if(temp!=NULL)
+     {
+        preorder(temp->left);
+        printf("%d",&temp->data);
+        preorder(temp->right);
+     }   
+}
+
+void postorder(struct node* temp)
+{
+     if(temp!=NULL)
+     {
+        preorder(temp->left);
+        preorder(temp->right);
+        printf("%d",&temp->data);
+     }   
+}
+
+int main()
+{
+        int n,data;
+        printf("Enter number of nodes :");
+        scanf("%d",&n);
+
+        for(int i=0;i<n;i++)
+        {
+                printf("\nEnter data : ");
+                scanf("%d",&data);
+                insert(data);
+        }
+        printf("\nPreoder : ");
+        preorder(root);
+        printf("\nInoder : ");
+        inorder(root);
+        printf("\nPostoder : ");
+        postorder(root);
+
+        return 0;
+}
+```
+- Output
+```
+Enter number of nodes :8
+
+Enter data : 6
+
+Enter data : 1
+
+Enter data : 7
+
+Enter data : 0
+
+Enter data : 2
+
+Enter data : 8
+
+Enter data : 5
+
+Enter data : 9
+
+Preoder : 6 1 0 2 5 7 8 9 
+Inoder : 1 0 2 5 6 7 8 9 
+Postoder : 1 0 2 5 7 8 9 6 
+```
+---
+## BFS
+---
+### Level Order Traversal
+
+1. Create an empty queue q
+2. temp_node = root /*start from root*/
+3. Loop while temp_node is not NULL
+    a. print temp_node->data.
+    b. Enqueue temp_node’s children (first left then right children) to q
+    c. Dequeue a node from q and assign it’s value to temp_node
+---
+### Spiral Order Traversal
+
+1. Create an empty queue q
+2. temp_node = root /*start from root*/
+3. Loop while temp_node is not NULL
+    a. print temp_node->data.
+    b. Enqueue temp_node’s children (first right then left children) to q
+    c. Dequeue a node from q and assign it’s value to temp_node
+---
+### Reverse Level Order Traversal
+
+1. Create an empty queue q
+2. temp_node = root /*start from root*/
+3. Loop while temp_node is not NULL
+    a. print temp_node->data.
+    b. Enqueue temp_node’s children (first right then left children) to q
+    c. Dequeue a node from q and assign it’s value to temp_node
+---
+### ZigZag Order Traversal
+
+1. Create an empty queue q
+2. temp_node = root /*start from root*/
+3. Loop while temp_node is not NULL
+    a. print temp_node->data.
+    b. Enqueue temp_node’s children (first right then left children) to q
+    c. Dequeue a node from q and assign it’s value to temp_node
+---
+### BFS Algorithm Applications
+- To build index by search index
+- For GPS navigation
+- Path finding algorithms
+- In Ford-Fulkerson algorithm to find maximum flow in a network
+- Cycle detection in an undirected graph
+- In minimum spanning tree
+
+---
+
+## DFS
+---
+### Inorder Traversal
+
+1. Create an empty stack S.
+2. Initialize current node as root
+3. Push the current node to S and set current = current->left until current is NULL
+4. If current is NULL and stack is not empty then 
+    a. Pop the top item from stack.
+    b. Print the popped item, set current = popped_item->right 
+    c. Go to step 3.
+5. If current is NULL and stack is empty then we are done.
+---
+### Preorder Traversal
+
+1. Create an empty stack S.
+2. Initialize current node as root
+3. Push the current node to S and set current = current->left until current is NULL
+4. If current is NULL and stack is not empty then 
+    a. Pop the top item from stack.
+    b. Print the popped item, set current = popped_item->right 
+    c. Go to step 3.
+5. If current is NULL and stack is empty then we are done.
+---
+### Postorder Traversal
+
+1. Create an empty stack S.
+2. Initialize current node as root
+3. Push the current node to S and set current = current->left until current is NULL
+4. If current is NULL and stack is not empty then 
+    a. Pop the top item from stack.
+    b. Print the popped item, set current = popped_item->right 
+    c. Go to step 3.
+5. If current is NULL and stack is empty then we are done.
+
+---
+### Application of DFS Algorithm
+- For finding the path
+- To test if the graph is bipartite
+- For finding the strongly connected components of a graph
+- For detecting cycles in a graph
 ---
