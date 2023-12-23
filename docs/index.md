@@ -1,5 +1,5 @@
 # Data Structures Documentation by **Kunal Khairnar** 
-<img align="left" width="220" height="380" src="profilepic.jpg">
+<img align="left" width="220" height="220" src="pfp.jpeg">
 
 ## Hey Folks :wave:
 
